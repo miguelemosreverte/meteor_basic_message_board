@@ -1,6 +1,9 @@
 Messages = new Meteor.Collection("messages");
 
 if (Meteor.isClient) {
+  Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_ONLY'
+  });
 
   Meteor.subscribe("messages");
 
