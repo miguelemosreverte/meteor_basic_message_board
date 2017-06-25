@@ -1,5 +1,5 @@
 {
-  "name": "simple-todos",
+  "name": "meteor_simple_message_board",
   "private": true,
   "scripts": {
     "start": "meteor run"
