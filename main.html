@@ -1,5 +1,8 @@
 <head>
     <title>Meteor Basic App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
   {{> chat}}
@@ -55,5 +58,9 @@
 
 
 <template name="message">
-    <p><strong>{{user}}</strong> <span>({{timestamp}})</span>: <i>{{msg}}</i></p>
+
+    <p><strong>{{user}}</strong> <span>({{timestamp}})</span>: <i>{{msg}}</i>
+          {{#if isUser user}}  <i class="material-icons">delete</i> {{/if}}
+    </p>
+
 </template>

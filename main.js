@@ -26,6 +26,10 @@ if (Meteor.isClient) {
       return Messages.find({}, {sort: {timestamps: -1}});
     }
   });
+
+  Template.registerHelper('isUser', function (username) {
+       return username === Meteor.user().username;
+  });
 }
 
 if (Meteor.isServer) {
