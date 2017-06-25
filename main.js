@@ -34,6 +34,10 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
 
+  Meteor.startup(function () {
+    Messages.remove({});
+  });
+
   Messages.allow({
     insert: function (userId, doc) {
       return (userId !== null);
