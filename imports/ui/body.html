@@ -1,0 +1,31 @@
+<body>
+  <div class="container">
+    <header>
+      <h1>Todo List ({{incompleteCount}})</h1>
+
+
+      {{> loginButtons}}
+
+      {{#if currentUser}}
+        {{> input}}
+      {{else}}
+        <div class="hero-unit">
+            <p>Please login!</p>
+        </div>
+      {{/if}}
+
+    </header>
+
+    <ul>
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
+    </ul>
+  </div>
+</body>
+
+
+<template name="input">
+    <input type="text" id="msg" placeholder="Your message goes here...">
+    <input type="button" value="Send message" class="btn btn-primary sendMsg">
+</template>
