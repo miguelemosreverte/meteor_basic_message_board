@@ -15,6 +15,15 @@ if (Meteor.isClient) {
       if (e.type == "keyup" && e.which == 13) {
         _sendMessage();
       }
+    },
+    'click .deleteMsg': function(e) {
+       _deleteMessage(this._id);
+    }
+  });
+
+  Template.message.events({
+    "click .delete": function () {
+            Meteor.call("deleteMessage", this._id);
     }
   });
 
@@ -25,7 +34,6 @@ if (Meteor.isClient) {
     el.focus();
   };
 
-
   Template.messages.helpers({
     messages: function() {
       return Messages.find({}, {sort: {timestamps: -1}});
@@ -35,12 +43,19 @@ if (Meteor.isClient) {
   Template.registerHelper('isUser', function (username) {
        return username === Meteor.user().username;
   });
+
 }
 
 if (Meteor.isServer) {
 
   Meteor.startup(function () {
     Messages.remove({});
+
+    Meteor.methods({
+  	  'deleteMessage' : function(id){
+  	    Messages.remove(id);
+  	  }
+  	});
   });
 
   Messages.allow({
