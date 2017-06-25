@@ -10,6 +10,11 @@ if (Meteor.isClient) {
   Template.input.events({
     'click .sendMsg': function(e) {
        _sendMessage();
+    },
+    'keyup #msg': function(e) {
+      if (e.type == "keyup" && e.which == 13) {
+        _sendMessage();
+      }
     }
   });
 
