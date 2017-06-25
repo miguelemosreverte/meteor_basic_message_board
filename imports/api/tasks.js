@@ -10,8 +10,11 @@ if (Meteor.isServer) {
     Tasks.remove({});
 
     Meteor.methods({
-      'deleteMessage' : function(id){
-        Tasks.remove(id);
+      'deleteMessage' : function(user, taskId){
+        owner = Tasks.findOne(taskId).user
+        if (user === owner){
+            Tasks.remove(taskId);
+        }
       }
     });
   });

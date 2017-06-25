@@ -11,6 +11,6 @@ Template.task.helpers({
 
 Template.task.events({
   'click .delete'() {
-    Meteor.call('deleteMessage', this._id);
+    Meteor.call('deleteMessage', Meteor.user().username, this._id);
   }
 });
