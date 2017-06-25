@@ -7,4 +7,34 @@
 
 
 <template name="chat">
+
+  <div class="row-fluid">
+      <div class="span12 well">
+          {{> input}}
+      </div>
+  </div>
+  <div class="row-fluid">
+      <div class="span8 well">
+          {{> messages}}
+      </div>
+  </div>
+
+</template>
+
+
+<template name="input">
+    <input type="text" id="msg" placeholder="Your message goes here...">
+    <input type="button" value="Send message" class="btn btn-primary sendMsg">
+</template>
+
+<template name="messages">
+    <div id="messages">
+        {{#each messages}}
+            {{> message}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="message">
+    <p><strong>{{user}}</strong> <span>({{timestamp}})</span>: <i>{{msg}}</i></p>
 </template>
